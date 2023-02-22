@@ -1,13 +1,82 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: Charcoal, sans-serif;
+  background-color: #203558;
+}
+img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  aspect-ratio: 300 / 440;
+  height: auto;
+}
+.search {
+  margin-bottom: 2rem;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  padding: 10px;
+  gap: 10px;
+}
+.info_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px);
+  cursor: pointer;
+}
+.movie {
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgb(255, 255, 255, 20%);
+}
+.movie > img {
+  transition: 0.75s;
+}
+.movie:hover > img {
+  transform: scale(1.1);
+}
+.movie-info {
+  padding: 1rem;
+  margin: 1rem;
+  max-width: 300px;
+  background-color: #fff;
+  border-radius: 10px;
+  cursor: auto;
+  box-shadow: 0 0 10px 1px rgb(255, 255, 255, 50%);
+}
+.movie-info > img {
+  width: 50%;
+}
+.movie-info > p {
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.movie-info > span {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.movie-info > .actors {
+  font-size: 0.75rem;
+  color: #b22222;
+}
+.movie-info > .plot {
+  font-size: 0.75rem;
+  color: #222;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
 }
