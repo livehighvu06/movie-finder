@@ -1,38 +1,7 @@
 import React, { useState, useEffect } from "react";
+import MovieInfo from "./components/MovieInfo";
+import Movie from "./components/Movie";
 import useFetch from "./hook/useFetch";
-const Movie = ({ poster, title, onClick }) => {
-  return (
-    <div className="movie" title={title} onClick={onClick}>
-      <img src={poster} alt={title} />
-    </div>
-  );
-};
-
-const MovieInfo = ({ imdbID }) => {
-  const { isLoading, apiData, isError } = useFetch(
-    `https://www.omdbapi.com/?i=${imdbID}&apikey=74c7894b`
-  );
-  if (isLoading || !apiData) {
-    return <div>Loading...</div>;
-  }
-
-  if (isError) {
-    return <div>Error in fetch data...</div>;
-  }
-
-  const { Title, Year, Poster, Actors, imdbRating, Plot } = apiData;
-
-  return (
-    <div className="movie-info">
-      <img src={Poster} alt={Title} />
-      <p>{Title}</p>
-      <span>{Year}</span>
-      <span className="actors">{Actors}</span>
-      <span className="rating">{imdbRating}</span>
-      <span className="plot">{Plot}</span>
-    </div>
-  );
-};
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -79,24 +48,26 @@ const App = () => {
   console.log("APP rendered");
   return (
     <div className="App">
-      <form className="search" onSubmit={handleSearchSubmit}>
-        <input type="text" placeholder="Search movie" />
-        <button type="submit">Search</button>
-      </form>
-      <div className="container">
-        {isLoading ? (
-          <div>Loading...</div>
-        ) : isError ? (
-          <div>Error in fetch data...</div>
-        ) : (
-          movies.map((movie) => (
-            <Movie
-              key={movie.imdbID}
-              poster={movie.Poster}
-              title={movie.Title}
-              onClick={() => handleMovieClick(movie.imdbID)}
-            />
-          ))
+      <div className="inner">
+        <form className="search" onSubmit={handleSearchSubmit}>
+          <input type="text" placeholder="Search movie" />
+          <button type="submit">Search</button>
+        </form>
+        {(isLoading && <p className="loading">Loading...</p>) || (
+          <div className="movies">
+            {isError ? (
+              <div>Error in fetch data...</div>
+            ) : (
+              movies.map((movie) => (
+                <Movie
+                  key={movie.imdbID}
+                  poster={movie.Poster}
+                  title={movie.Title}
+                  onClick={() => handleMovieClick(movie.imdbID)}
+                />
+              ))
+            )}
+          </div>
         )}
       </div>
       <div

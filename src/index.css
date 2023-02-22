@@ -13,13 +13,30 @@ img {
   aspect-ratio: 300 / 440;
   height: auto;
 }
+.inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 10px;
+  min-height: 100vh;
+}
 .search {
+  display: flex;
   margin-bottom: 2rem;
 }
-.container {
+.search > input,
+.search > button {
+  padding: 10px;
+  border: 0;
+  flex: 1;
+  font-size: 1.2rem;
+}
+.search > button {
+  cursor: pointer;
+  flex: 0 0 150px;
+}
+.movies {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  padding: 10px;
   gap: 10px;
 }
 .info_container {
@@ -79,4 +96,9 @@ img {
 .hidden {
   visibility: hidden;
   opacity: 0;
+}
+.loading {
+  color: #fff;
+  font-weight: bold;
+  font-size: 2rem;
 }
