@@ -1,11 +1,14 @@
 # Movie Finder
+![cover](https://i.imgur.com/zDWIdjk.jpg)
+![CARD-INFO](https://i.imgur.com/hZS8hR9.jpg)
+
 
 ## 說明
 因為API的緣故，只能透過英文片名搜尋，預設值是`Batman`，可嘗試搜尋其他英文片名，點擊CARD後會跳出詳細的說明。
 
 此練習嘗試將fetch抽出來獨立撰寫成一個hook
 
-```
+```javascript
 import { useState, useEffect } from "react";
 
 export default function useFetch(url) {
